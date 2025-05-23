@@ -1,0 +1,170 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 2.5em;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+.summary {
+    text-align: justify;
+    margin-bottom: 40px;
+    font-size: 1.1em;
+    color: #555;
+    background-color: #eaf6fd;
+    padding: 20px;
+    border-radius: 6px;
+    border-left: 5px solid #3498db;
+}
+
+.timeline {
+    position: relative;
+    padding: 20px 0;
+    list-style: none;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background: #3498db;
+    margin-left: -2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.timeline-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #3498db;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    z-index: 1;
+    top: 25px;
+    left: -32px; /* Ajuste para alinear con la línea central */
+    margin-left: -10px;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+    transform: translateX(-50%);
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+    transform: translateX(0);
+}
+
+.timeline-item:nth-child(odd)::before {
+    left: auto;
+    right: -32px; /* Ajuste para alinear con la línea central */
+}
+
+.timeline-item:nth-child(even)::before {
+    left: -32px;
+}
+
+/* Reglas de diseño para ambos lados */
+.timeline-item:nth-child(odd) {
+    left: auto;
+    right: 50%;
+    text-align: right;
+    margin-right: 40px;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+    text-align: left;
+    margin-left: 40px;
+}
+
+.timeline-date {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.timeline-title {
+    font-size: 1.5em;
+    color: #3498db;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.timeline-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    text-align: justify;
+    color: #444;
+    font-size: 1em;
+}
+
+.timeline-item.active .timeline-detail {
+    max-height: 500px; /* Suficiente para mostrar todo el contenido */
+    transition: max-height 0.7s ease-in;
+}
+
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item {
+        left: 0;
+        margin-left: 60px;
+        transform: translateX(0);
+        text-align: left;
+        width: calc(100% - 80px); /* Ajusta el ancho para dejar espacio a la línea */
+    }
+
+    .timeline-item::before {
+        left: -32px;
+        right: auto;
+    }
+
+    .timeline-item:nth-child(odd) {
+        margin-right: auto;
+        text-align: left;
+    }
+}
